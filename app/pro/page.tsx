@@ -38,7 +38,7 @@ export default function ProPage() {
           script,
           platform,
           tone,
-          count: 15, // PRO VERSION: more shorts
+          count: 15, // PRO VERSION: up to 15 shorts
         }),
       });
 
@@ -69,18 +69,45 @@ export default function ProPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-3xl space-y-6 py-10">
-        <header className="space-y-2">
-          <p className="text-xs uppercase tracking-wide text-sky-400">
-            ShortsKit Pro
+        {/* PRO HERO */}
+        <header className="space-y-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1">
+            <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            <span className="text-xs font-medium text-emerald-300">
+              ShortsKit Pro
+            </span>
+            <span className="text-[10px] uppercase tracking-wide text-emerald-200/80">
+              You&apos;re a Pro user 🎯
+            </span>
+          </div>
+
+          <div className="space-y-2">
+            <h1 className="text-3xl font-semibold">
+              Turn one long video into up to 15 Shorts in 30 seconds
+            </h1>
+            <p className="text-slate-300">
+              Paste your YouTube script or transcript. Generate a batch of Shorts, Reels,
+              or TikToks with hooks, punchy lines, and CTAs — all in one go.
+            </p>
+          </div>
+
+          <p className="text-[11px] text-slate-500">
+            This is your personal Pro workspace. Please don&apos;t share this link publicly.
           </p>
-          <h1 className="text-3xl font-semibold">
-            Turn one video into 15 Shorts in 30 seconds
-          </h1>
-          <p className="text-slate-300">
-            Paste your script or transcript. Generate a batch of short-form scripts with hooks &amp; CTAs.
+
+          <p className="text-xs text-slate-500">
+            Need to test quickly with fewer ideas?{" "}
+            <a
+              href="/"
+              className="text-sky-400 underline underline-offset-2 hover:text-sky-300"
+            >
+              Use the free 3-shorts version
+            </a>
+            .
           </p>
         </header>
 
+        {/* FORM */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block mb-1 text-sm font-medium">
@@ -89,7 +116,7 @@ export default function ProPage() {
             <textarea
               value={script}
               onChange={(e) => setScript(e.target.value)}
-              className="w-full h-40 rounded-md bg-slate-900 border border-slate-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full h-40 rounded-md bg-slate-900 border border-slate-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="Paste your YouTube script or transcript here..."
             />
           </div>
@@ -132,13 +159,37 @@ export default function ProPage() {
             disabled={loading}
             className="inline-flex items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
           >
-            {loading ? "Generating..." : "Generate 15 Shorts (Pro)"}
+            {loading ? "Generating..." : "Generate up to 15 Shorts (Pro)"}
           </button>
         </form>
 
-        <section className="space-y-4">
+        {/* PRO INFO */}
+        <section className="mt-4 border border-emerald-500/30 rounded-lg p-4 bg-slate-900/70 space-y-2">
+          <h2 className="text-sm font-semibold text-emerald-300">
+            Pro perks
+          </h2>
+          <ul className="list-disc list-inside text-sm text-slate-200 space-y-1">
+            <li>
+              Batch up to <span className="font-medium">15 Shorts per script</span> so one video can cover a whole week of content.
+            </li>
+            <li>
+              Explore multiple hooks and angles for the same idea to find the most viral take.
+            </li>
+            <li>
+              Perfect for editors and tiny agencies running channels for multiple clients.
+            </li>
+          </ul>
+        </section>
+
+        {/* GENERATED SHORTS RESULTS */}
+        <section className="mt-6 space-y-4">
           {results.length > 0 && (
-            <h2 className="text-xl font-semibold">Generated Shorts</h2>
+            <div className="flex items-baseline justify-between gap-2">
+              <h2 className="text-xl font-semibold">Generated Shorts</h2>
+              <p className="text-xs text-slate-400">
+                Showing {results.length} Shorts from this script
+              </p>
+            </div>
           )}
           <div className="space-y-3">
             {results.map((short, idx) => (
@@ -172,6 +223,18 @@ export default function ProPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* SMALL NOTE */}
+        <section className="mt-6 space-y-2 text-xs text-slate-500 border-t border-slate-800 pt-4">
+          <p>
+            Tip: Run the same script with different tones (Educational vs Storytelling vs Motivational)
+            to get multiple angles for the same core idea.
+          </p>
+          <p>
+            You can also paste outlines or cleaned-up transcripts – the clearer your input, the better
+            your Shorts scripts.
+          </p>
         </section>
       </div>
     </main>
