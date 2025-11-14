@@ -113,10 +113,12 @@ export default function Home() {
           <p className="text-sm text-slate-400 pt-1">
             Need more than 3?{" "}
             <a
-              href="/pro"
-              className="text-sky-400 underline underline-offset-2 hover:text-sky-300"
+              href="https://mrcapital.gumroad.com/l/shortskit-pro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center mt-3 rounded-md bg-emerald-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-400"
             >
-              Try the Pro version (15 Shorts)
+              Get Pro Access
             </a>
           </p>
         </header>
