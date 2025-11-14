@@ -105,23 +105,25 @@ export default function Home() {
       <div className="w-full max-w-3xl space-y-6 py-10">
         <header className="space-y-2">
           <h1 className="text-3xl font-semibold">
-            Turn one video into Shorts in 30 seconds
+            Turn one long video into 3–15 Shorts in 30 seconds
           </h1>
           <p className="text-slate-300">
-            Paste your script or transcript. Get short-form scripts with hooks &amp; CTAs.
+            Paste your YouTube script or transcript. Get ready-to-record Shorts, Reels, or TikToks with hooks, punchy lines, and CTAs.
+          </p>
+          <p className="text-sm text-slate-400 pt-1">
+            Built for solo creators and tiny agencies who don&apos;t want to stare at a blank doc ever again.
           </p>
           <p className="text-sm text-slate-400 pt-1">
             Need more than 3?{" "}
             <a
-              href="https://mrcapital.gumroad.com/l/shortskit-pro"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center mt-3 rounded-md bg-emerald-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-400"
+              href="/pro"
+              className="text-sky-400 underline underline-offset-2 hover:text-sky-300"
             >
-              Get Pro Access
+              Try the Pro version (15 Shorts)
             </a>
           </p>
         </header>
+
 
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -178,6 +180,135 @@ export default function Home() {
             {loading ? "Generating..." : "Generate 3 Shorts (demo)"}
           </button>
         </form>
+
+      // HOW IT WORKS SECTION        
+
+        <section className="mt-4 border border-slate-800 rounded-lg p-4 bg-slate-900/60 space-y-2">
+          <h2 className="text-sm font-semibold text-slate-100">
+            How it works
+          </h2>
+          <ol className="list-decimal list-inside text-sm text-slate-300 space-y-1">
+            <li>
+              <span className="font-medium">Paste your script or transcript</span> – drop in a YouTube script, video notes, or a cleaned-up transcript.
+            </li>
+            <li>
+              <span className="font-medium">Pick platform &amp; tone</span> – Shorts, Reels, TikTok + Educational, Storytelling, or Motivational.
+            </li>
+            <li>
+              <span className="font-medium">Get ready-to-record scripts</span> – hooks, 3–6 punchy lines, and a clear CTA for each short.
+            </li>
+          </ol>
+        </section>
+
+        <section className="mt-4 border border-slate-800 rounded-lg p-4 bg-slate-900/60">
+          <p className="text-sm text-slate-100">
+            Want more than 3 Shorts per script?
+          </p>
+          <p className="text-xs text-slate-400 mt-1">
+            The free version generates 3 Shorts. Pro users generate up to 15 Shorts per script and batch a whole week of content ideas in one go.
+          </p>
+          <a
+            href="https://mrcapital.gumroad.com/l/shortskit-pro"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center mt-3 rounded-md bg-emerald-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-400"
+          >
+            Get Pro Access
+          </a>
+        </section>
+
+      // SEE IT IN ACTION SECTION 
+
+        <section className="mt-6 border border-slate-800 rounded-lg p-4 bg-slate-900/60 space-y-3">
+          <h2 className="text-sm font-semibold text-slate-100">
+            See it in action (real example)
+          </h2>
+          <div className="space-y-2 text-sm text-slate-300">
+            <p className="font-medium text-slate-200">
+              Input (excerpt from a long-form script):
+            </p>
+            <p className="text-slate-400">
+              &quot;Today we&apos;re talking about how to stay focused in a world of constant notifications. Most people try to fight distractions with willpower, but that never works for long. Instead, you need a simple system that makes distraction harder and deep work easier...&quot;
+            </p>
+          </div>
+          <div className="space-y-2 text-sm text-slate-300">
+            <p className="font-medium text-slate-200">
+              One of the Shorts generated:
+            </p>
+            <p>
+              <span className="font-semibold">Hook:</span> &quot;Your phone is the reason you can&apos;t focus more than 5 minutes.&quot;
+            </p>
+            <div>
+              <p className="font-semibold">Body:</p>
+              <ul className="list-disc list-inside text-slate-300">
+                <li>Most people try to fight distraction with willpower.</li>
+                <li>That&apos;s like bringing a spoon to a gunfight.</li>
+                <li>You need a system that makes distraction harder by default.</li>
+                <li>Here&apos;s the 10-second rule I use every day.</li>
+              </ul>
+            </div>
+            <p>
+              <span className="font-semibold">CTA:</span> &quot;Save this and use the 10-second rule before your next deep work session.&quot;
+            </p>
+          </div>
+        </section>
+
+      // Why use ShortsKit” benefits section
+
+        <section className="mt-6 space-y-2">
+          <h2 className="text-sm font-semibold text-slate-100">
+            Why use ShortsKit instead of doing it by hand?
+          </h2>
+          <ul className="list-disc list-inside text-sm text-slate-300 space-y-1">
+            <li>
+              <span className="font-medium">Batch ideas fast</span> – turn one long script into a full week of Shorts ideas in one go.
+            </li>
+            <li>
+              <span className="font-medium">No more blank docs</span> – start from 10–15 strong hooks instead of staring at an empty page.
+            </li>
+            <li>
+              <span className="font-medium">Keep your voice</span> – platform- and tone-aware outputs that still sound like a human, not a robot.
+            </li>
+            <li>
+              <span className="font-medium">Built for real creators</span> – optimized for YouTube + short-form, not generic &quot;AI content&quot;.
+            </li>
+          </ul>
+        </section>
+
+        <section className="mt-8 space-y-3 border-t border-slate-800 pt-4">
+          <h2 className="text-sm font-semibold text-slate-100">
+            FAQ
+          </h2>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">What do I paste?</p>
+            <p>
+              A YouTube script, video outline, cleaned-up transcript, or even a long Twitter thread. The clearer your input, the better the Shorts.
+            </p>
+          </div>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">Can I use this for TikTok and Reels too?</p>
+            <p>
+              Yes. Just select the platform in the dropdown. The structure works across all short-form platforms.
+            </p>
+          </div>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">Does Pro unlock better AI?</p>
+            <p>
+              Pro gives you more outputs per script (up to 15) so you can batch a full week or more of content at once.
+            </p>
+          </div>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">Do you store my scripts?</p>
+            <p>
+              Right now everything runs through the model and shows in your browser. I&apos;m not building a fancy account system yet.
+            </p>
+          </div>
+        </section>
+
 
         <section className="space-y-4">
           {results.length > 0 && (
