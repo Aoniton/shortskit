@@ -16,39 +16,6 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<ShortScript[]>([]);
 
-  // For now, this is a FAKE generator (no AI yet) so you can see the UI working.
-  function generateDummyShorts(): ShortScript[] {
-    return [
-      {
-        hook: "Stop scrolling if you want to focus better.",
-        body: [
-          "Most people waste their best hours on random content.",
-          "You can flip that with one simple rule.",
-          "Turn your phone into a tool, not a distraction.",
-        ],
-        cta: "Follow for more short focus tactics you can use today.",
-      },
-      {
-        hook: "You’re one habit away from doubling your output.",
-        body: [
-          "High performers don’t rely on motivation.",
-          "They rely on boring, repeatable systems.",
-          "You can build one in 10 minutes tonight.",
-        ],
-        cta: "Save this and try the 10-minute system tonight.",
-      },
-      {
-        hook: "Here’s how to make your next video 10x easier to record.",
-        body: [
-          "Most creators improvise every line and burn out.",
-          "Break your idea into 3 bullets before you press record.",
-          "Each bullet becomes one clean, confident line.",
-        ],
-        cta: "Use this on your next video and tell me if it helped.",
-      },
-    ];
-  }
-
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
@@ -61,8 +28,7 @@ export default function Home() {
     setLoading(true);
     setResults([]);
 
-    // API Short Generation Call via OpenAI API key
-        try {
+    try {
       const res = await fetch("/api/generate-shorts", {
         method: "POST",
         headers: {
@@ -90,8 +56,8 @@ export default function Home() {
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
-    }}
-
+    }
+  }
 
   function handleCopy(shortScript: ShortScript) {
     const text = `${shortScript.hook}\n\n${shortScript.body.join(
@@ -103,15 +69,18 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-3xl space-y-6 py-10">
+        {/* HERO */}
         <header className="space-y-2">
           <h1 className="text-3xl font-semibold">
             Turn one long video into 3–15 Shorts in 30 seconds
           </h1>
           <p className="text-slate-300">
-            Paste your YouTube script or transcript. Get ready-to-record Shorts, Reels, or TikToks with hooks, punchy lines, and CTAs.
+            Paste your YouTube script or transcript. Get ready-to-record Shorts, Reels, or
+            TikToks with hooks, punchy lines, and CTAs.
           </p>
           <p className="text-sm text-slate-400 pt-1">
-            Built for solo creators and tiny agencies who don&apos;t want to stare at a blank doc ever again.
+            Built for solo creators and tiny agencies who don&apos;t want to stare at a
+            blank doc ever again.
           </p>
           <p className="text-sm text-slate-400 pt-1">
             Need more than 3?{" "}
@@ -124,8 +93,7 @@ export default function Home() {
           </p>
         </header>
 
-
-
+        {/* FORM */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block mb-1 text-sm font-medium">
@@ -181,8 +149,7 @@ export default function Home() {
           </button>
         </form>
 
-      // HOW IT WORKS SECTION        
-
+        {/* HOW IT WORKS */}
         <section className="mt-4 border border-slate-800 rounded-lg p-4 bg-slate-900/60 space-y-2">
           <h2 className="text-sm font-semibold text-slate-100">
             How it works
@@ -200,12 +167,14 @@ export default function Home() {
           </ol>
         </section>
 
+        {/* UPGRADE CARD */}
         <section className="mt-4 border border-slate-800 rounded-lg p-4 bg-slate-900/60">
           <p className="text-sm text-slate-100">
             Want more than 3 Shorts per script?
           </p>
           <p className="text-xs text-slate-400 mt-1">
-            The free version generates 3 Shorts. Pro users generate up to 15 Shorts per script and batch a whole week of content ideas in one go.
+            The free version generates 3 Shorts. Pro users generate up to 15 Shorts per script
+            and batch a whole week of content ideas in one go.
           </p>
           <a
             href="https://mrcapital.gumroad.com/l/shortskit-pro"
@@ -217,8 +186,7 @@ export default function Home() {
           </a>
         </section>
 
-      // SEE IT IN ACTION SECTION 
-
+        {/* EXAMPLE BLOCK */}
         <section className="mt-6 border border-slate-800 rounded-lg p-4 bg-slate-900/60 space-y-3">
           <h2 className="text-sm font-semibold text-slate-100">
             See it in action (real example)
@@ -228,7 +196,9 @@ export default function Home() {
               Input (excerpt from a long-form script):
             </p>
             <p className="text-slate-400">
-              &quot;Today we&apos;re talking about how to stay focused in a world of constant notifications. Most people try to fight distractions with willpower, but that never works for long. Instead, you need a simple system that makes distraction harder and deep work easier...&quot;
+              &quot;Today we&apos;re talking about how to stay focused in a world of constant notifications.
+              Most people try to fight distractions with willpower, but that never works for long.
+              Instead, you need a simple system that makes distraction harder and deep work easier...&quot;
             </p>
           </div>
           <div className="space-y-2 text-sm text-slate-300">
@@ -253,8 +223,7 @@ export default function Home() {
           </div>
         </section>
 
-      // Why use ShortsKit” benefits section
-
+        {/* BENEFITS */}
         <section className="mt-6 space-y-2">
           <h2 className="text-sm font-semibold text-slate-100">
             Why use ShortsKit instead of doing it by hand?
@@ -264,7 +233,7 @@ export default function Home() {
               <span className="font-medium">Batch ideas fast</span> – turn one long script into a full week of Shorts ideas in one go.
             </li>
             <li>
-              <span className="font-medium">No more blank docs</span> – start from 10–15 strong hooks instead of staring at an empty page.
+              <span className="font-medium">No more blank docs</span> – start from strong hooks instead of staring at an empty page.
             </li>
             <li>
               <span className="font-medium">Keep your voice</span> – platform- and tone-aware outputs that still sound like a human, not a robot.
@@ -275,42 +244,8 @@ export default function Home() {
           </ul>
         </section>
 
-        <section className="mt-8 space-y-3 border-t border-slate-800 pt-4">
-          <h2 className="text-sm font-semibold text-slate-100">
-            FAQ
-          </h2>
-
-          <div className="space-y-1 text-sm text-slate-300">
-            <p className="font-medium">What do I paste?</p>
-            <p>
-              A YouTube script, video outline, cleaned-up transcript, or even a long Twitter thread. The clearer your input, the better the Shorts.
-            </p>
-          </div>
-
-          <div className="space-y-1 text-sm text-slate-300">
-            <p className="font-medium">Can I use this for TikTok and Reels too?</p>
-            <p>
-              Yes. Just select the platform in the dropdown. The structure works across all short-form platforms.
-            </p>
-          </div>
-
-          <div className="space-y-1 text-sm text-slate-300">
-            <p className="font-medium">Does Pro unlock better AI?</p>
-            <p>
-              Pro gives you more outputs per script (up to 15) so you can batch a full week or more of content at once.
-            </p>
-          </div>
-
-          <div className="space-y-1 text-sm text-slate-300">
-            <p className="font-medium">Do you store my scripts?</p>
-            <p>
-              Right now everything runs through the model and shows in your browser. I&apos;m not building a fancy account system yet.
-            </p>
-          </div>
-        </section>
-
-
-        <section className="space-y-4">
+        {/* GENERATED SHORTS RESULTS */}
+        <section className="mt-6 space-y-4">
           {results.length > 0 && (
             <h2 className="text-xl font-semibold">Generated Shorts</h2>
           )}
@@ -347,7 +282,44 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* FAQ */}
+        <section className="mt-8 space-y-3 border-t border-slate-800 pt-4">
+          <h2 className="text-sm font-semibold text-slate-100">
+            FAQ
+          </h2>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">What do I paste?</p>
+            <p>
+              A YouTube script, video outline, cleaned-up transcript, or even a long Twitter thread.
+              The clearer your input, the better the Shorts.
+            </p>
+          </div>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">Can I use this for TikTok and Reels too?</p>
+            <p>
+              Yes. Just select the platform in the dropdown. The structure works across all short-form platforms.
+            </p>
+          </div>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">Does Pro unlock better AI?</p>
+            <p>
+              Pro gives you more outputs per script (up to 15) so you can batch a full week or more of content at once.
+            </p>
+          </div>
+
+          <div className="space-y-1 text-sm text-slate-300">
+            <p className="font-medium">Do you store my scripts?</p>
+            <p>
+              Right now everything runs through the model and shows in your browser.
+              I&apos;m not building a fancy account system yet.
+            </p>
+          </div>
+        </section>
       </div>
     </main>
   );
-} 
+}
