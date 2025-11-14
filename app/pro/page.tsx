@@ -8,6 +8,27 @@ type ShortScript = {
   cta: string;
 };
 
+const MAX_PRO_RUNS_PER_DAY = 100;
+
+function getTodayKey() {
+  const today = new Date().toISOString().slice(0, 10); // e.g. "2025-11-14"
+  return `shortskit_pro_runs_${today}`;
+}
+
+function getRunsToday(): number {
+  if (typeof window === "undefined") return 0;
+  const key = getTodayKey();
+  const value = window.localStorage.getItem(key);
+  return value ? Number(value) || 0 : 0;
+}
+
+function incrementRunsToday() {
+  if (typeof window === "undefined") return;
+  const key = getTodayKey();
+  const current = getRunsToday();
+  window.localStorage.setItem(key, String(current + 1));
+}
+
 export default function ProPage() {
   const [script, setScript] = useState("");
   const [platform, setPlatform] = useState("YouTube Shorts");
@@ -21,6 +42,14 @@ export default function ProPage() {
 
     if (!script.trim()) {
       setError("Please paste a script or transcript first.");
+      return;
+    }
+
+    const runs = getRunsToday();
+    if (runs >= MAX_PRO_RUNS_PER_DAY) {
+      setError(
+        "You’ve hit today’s fair use limit for Pro generations. Please try again tomorrow."
+      );
       return;
     }
 
@@ -51,6 +80,7 @@ export default function ProPage() {
       }
 
       setResults(data.shorts || []);
+      incrementRunsToday();
     } catch (err) {
       console.error(err);
       setError("Something went wrong. Please try again.");
@@ -65,6 +95,8 @@ export default function ProPage() {
     )}\n\n${shortScript.cta}`;
     navigator.clipboard.writeText(text);
   }
+
+  const runsToday = typeof window !== "undefined" ? getRunsToday() : 0;
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
@@ -86,13 +118,19 @@ export default function ProPage() {
               Turn one long video into up to 15 Shorts in 30 seconds
             </h1>
             <p className="text-slate-300">
-              Paste your YouTube script or transcript. Generate a batch of Shorts, Reels,
-              or TikToks with hooks, punchy lines, and CTAs — all in one go.
+              Paste your YouTube script or transcript. Generate a batch of Shorts,
+              Reels, or TikToks with hooks, punchy lines, and CTAs — all in one go.
             </p>
           </div>
 
           <p className="text-[11px] text-slate-500">
-            This is your personal Pro workspace. Please don&apos;t share this link publicly.
+            This is your personal Pro workspace. Please don&apos;t share this link
+            publicly.
+          </p>
+
+          <p className="text-[11px] text-slate-500">
+            Fair use: up to {MAX_PRO_RUNS_PER_DAY} Pro generations per day per browser.
+            You&apos;ve used <span className="font-semibold">{runsToday}</span> today.
           </p>
 
           <p className="text-xs text-slate-500">
@@ -170,13 +208,17 @@ export default function ProPage() {
           </h2>
           <ul className="list-disc list-inside text-sm text-slate-200 space-y-1">
             <li>
-              Batch up to <span className="font-medium">15 Shorts per script</span> so one video can cover a whole week of content.
+              Batch up to{" "}
+              <span className="font-medium">15 Shorts per script</span> so one video
+              can cover a whole week of content.
             </li>
             <li>
-              Explore multiple hooks and angles for the same idea to find the most viral take.
+              Explore multiple hooks and angles for the same idea to find the most
+              viral take.
             </li>
             <li>
-              Perfect for editors and tiny agencies running channels for multiple clients.
+              Perfect for editors and tiny agencies running channels for multiple
+              clients.
             </li>
           </ul>
         </section>
@@ -228,12 +270,12 @@ export default function ProPage() {
         {/* SMALL NOTE */}
         <section className="mt-6 space-y-2 text-xs text-slate-500 border-t border-slate-800 pt-4">
           <p>
-            Tip: Run the same script with different tones (Educational vs Storytelling vs Motivational)
-            to get multiple angles for the same core idea.
+            Tip: Run the same script with different tones (Educational vs Storytelling
+            vs Motivational) to get multiple angles for the same core idea.
           </p>
           <p>
-            You can also paste outlines or cleaned-up transcripts – the clearer your input, the better
-            your Shorts scripts.
+            You can also paste outlines or cleaned-up transcripts – the clearer your
+            input, the better your Shorts scripts.
           </p>
         </section>
       </div>
