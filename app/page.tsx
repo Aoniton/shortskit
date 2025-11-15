@@ -323,12 +323,12 @@ export default function Home() {
             <p className="mt-4 text-xs text-slate-500">
               Got feedback or a bug to report? DM me on X:{" "}
               <a
-                href="https://x.com/Mr_Capital"
+                href="https://x.com/Mr_Capitall"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sky-400 underline underline-offset-2 hover:text-sky-300"
               >
-                @Mr_Capital
+                @Mr_Capitall
               </a>
               .
             </p>
