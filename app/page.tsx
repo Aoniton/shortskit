@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { Analytics } from "@vercel/analytics/next"
 
 type ShortScript = {
   hook: string;
