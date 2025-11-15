@@ -277,20 +277,22 @@ export default function ProPage() {
             You can also paste outlines or cleaned-up transcripts – the clearer your
             input, the better your Shorts scripts.
           </p>
+
+          <p className="mt-4 text-xs text-slate-500">
+            Got feedback or a bug to report? DM me on X:{" "}
+              <a
+              href="https://x.com/Mr_Capital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sky-400 underline underline-offset-2 hover:text-sky-300"
+            >
+              @Mr_Capital
+            </a>
+            .
+          </p>
         </section>
 
-        <p className="mt-4 text-xs text-slate-500">
-          Got feedback or a bug to report? DM me on X:{" "}
-          <a
-            href="https://x.com/Mr_Capital"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sky-400 underline underline-offset-2 hover:text-sky-300"
-          >
-            @Mr_Capital
-          </a>
-          .
-        </p>
+
 
 
       </div>
